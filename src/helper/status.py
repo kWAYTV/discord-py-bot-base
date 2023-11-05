@@ -9,7 +9,7 @@ class BotStatus:
 
         self.sentences = [
             lambda self: f"Holding {len(self.bot.guilds)} guilds & {sum(guild.member_count for guild in self.bot.guilds)} users.",
-            lambda self: f"Website: {self.config.app_url}",
+            lambda self: f"Hey! My name is {self.config.app_name}.",
         ]
 
         self.status_generator = cycle(self.sentences)
