@@ -1,0 +1,4 @@
+discord.py
+kwslogger
+PyYAML
+sqlite3
