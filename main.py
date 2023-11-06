@@ -8,8 +8,8 @@ from src.manager.file_manager import FileManager
 # Define the bot & load the commands, events and loops
 class Bot(commands.Bot):
     def __init__(self) -> None:
-        self.file_manager = FileManager()
         self.logger = Logger()
+        self.file_manager = FileManager()
         super().__init__(command_prefix=Config().bot_prefix, help_command=None, intents=discord.Intents.all())
 
     # Function to load the extensions

@@ -20,14 +20,14 @@ class Ping(commands.Cog):
                 color=0xb34760
             )
             embed.set_author(name=self.config.app_name, icon_url=self.config.app_logo, url=self.config.app_url)
-            embed.set_footer(text=self.config.app_name_branded, icon_url=self.config.app_logo)
+            embed.set_footer(text=self.config.app_name, icon_url=self.config.app_logo)
             embed.set_thumbnail(url=self.config.app_logo)
             embed.set_image(url=self.config.rainbow_line_gif)
             embed.timestamp = self.logger.get_current_timestamp()
 
             await interaction.response.send_message(embed=embed, ephemeral=True)
         except Exception as e:
-            self.logger.error(f"Failed to respond to ping: {e}")
+            self.logger.error(f"Failed to respond to ping command: {e}")
             await interaction.response.send_message("There was an error trying to execute that command!", ephemeral=True)
 
     @ping_command.error

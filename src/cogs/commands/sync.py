@@ -1,7 +1,6 @@
 from discord.ext import commands
 from src.util.logger import Logger
 from src.helper.config import Config
-from discord.errors import NotFound
 
 class SyncCommand(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -13,11 +12,10 @@ class SyncCommand(commands.Cog):
     @commands.has_permissions(administrator=True)
     async def sync(self, ctx: commands.Context):
         try:
-            # Attempt to delete the message, catching the NotFound exception if it occurs.
             await ctx.message.delete()
-        except NotFound:
-            # If the message is not found, you can either log this or pass.
+        except:
             self.logger.warning("Tried to delete a message that was not found.")
+            pass
 
         try:
             await self.bot.tree.sync()

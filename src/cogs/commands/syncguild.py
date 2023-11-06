@@ -11,7 +11,11 @@ class SyncGuildCommand(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def syncguild(self, ctx: commands.Context):
-        await ctx.message.delete()
+        try:
+            await ctx.message.delete()
+        except:
+            self.logger.warning("Tried to delete a message that was not found.")
+            pass
 
         try:
             await self.bot.tree.sync(guild=ctx.guild)
